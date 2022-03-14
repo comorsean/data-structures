@@ -25,7 +25,7 @@ public class LinkedList {
             startNode = node;
         } else {
             Node temp = startNode;
-            while(temp.next != null) {
+            while (temp.next != null) {
                 temp = temp.next;
             }
             temp.next = node;
@@ -46,6 +46,45 @@ public class LinkedList {
             node = node.next;
         }
         return 0;
+    }
+
+    public void pushFront(int value) {
+        Node node = new Node();
+        node.value = value;
+
+        if (startNode == null) {
+            startNode = node;
+        } else {
+            node.next = startNode;
+            startNode.previous = node;
+            startNode = node;
+        }
+        size++;
+    }
+
+    public void delete(int index) {
+        if (index >= size) {
+            throw new ArrayIndexOutOfBoundsException();
+        }
+        Node node = startNode;
+        for (int i = 0; i < size; i++) {
+            if (i == index) {
+                break;
+            }
+            node = node.next;
+        }
+        if (node == startNode) {
+            startNode = startNode.next;
+        }
+        if (node.previous != null) {
+            node.previous.next = node.next;
+        }
+        if (node.next != null) {
+            node.next.previous = node.previous;
+        }
+        node.next = node.previous = null;
+        //node = null; lokalna varijabla ce nestati nakon poziva metode
+        size--;
     }
 
 }

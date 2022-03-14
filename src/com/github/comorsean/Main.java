@@ -20,5 +20,12 @@ public class Main {
         System.out.println(linkedList.get(1));
         System.out.println(linkedList.get(2));
 
+        linkedList.pushFront(9);
+        //System.out.println(linkedList.get(0));
+
+        linkedList.delete(0);
+        System.out.println(linkedList.get(0));
+        System.out.println(linkedList.getSize());
+
     }
 }
